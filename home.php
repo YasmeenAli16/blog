@@ -1,4 +1,5 @@
 <?php
+$active_link = "home";
 require_once("header.php");
 ?>
 

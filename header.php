@@ -1,4 +1,5 @@
 <?php
+$user = $_SESSION['user'];
 if (empty($_SESSION["user"])){
 	header("location:login.php?secure=page");
 }
@@ -45,15 +46,55 @@ if (empty($_SESSION["user"])){
 
       <li class="nav-item">
    
-        <a class="nav-link active" href="home.php">Home </a>
+      <li class="nav-item <?php 
+    
+    if($active_link  =="home")echo "active";
+      ?>">
+        <a class="nav-link " href="home.php">Home </a>
+      </li>
+
+      <?php if ($user["role"] == "admin") { ?>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle <?php 
+ 
+        if($active_link  =="users")echo "active";
+      ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Users
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="user_create.php">Add User</a>
+          <a class="dropdown-item" href="users.php">Users List</a>
+          
+
+        </div>
+      </li>
+        <?php }?>
+     
+    </ul>
+
+    <ul class="navbar-nav"> 
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <?=$user["name"]?>
+  </a>
+  
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+  <a class="dropdown-item" href="logout.php">Logout</a>
+  <?php /*
+  if ($lang =="ar"){
+      ?>
+      <a class="dropdown-item" href="change_lang.php?lang=en">English</a>
+      <?php
+  }else{
+    ?>
+    <a class="dropdown-item" href="change_lang.php?lang=ar">اللغةالعربية</a>
+    <?php
+  }*/
+  ?>  
       </li>
     </ul>
 </div>
-
-<?php //echo "Welcome " . $user['name']?>      
-      <form class="form-inline" method="POST" action="logout.php">
-          <button class="btn btn-secondary" type="submit">Logout</button>
-      </form>
+     
      
 </nav>
 

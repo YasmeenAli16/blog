@@ -23,12 +23,10 @@ $qry = "SELECT p.id, p.title, p.body, p.image, p.created_by, p.status, p.action_
 $con = mysqli_connect(HOST_NAME , DB_UN ,DB_PW,DB_NAME,DB_PORT);
 $rslt = mysqli_query($con, $qry);
 $post = mysqli_fetch_assoc($rslt)
-
 ?>
 <div class="container-fluid py-5 my-5">
 
 <div class="col-md-5" style="float:right">
-
 
                     <?php
                     $user = $_SESSION['user'];
@@ -58,10 +56,56 @@ $post = mysqli_fetch_assoc($rslt)
 <p class="text mb-2" style="font-weight:bold;">By <?= $post['name'] ?> at <?= $post['created_at'] ?></p>
 
         
-         
-        
       </div>
 </div>
+
+
+<div class="container">
+<?php
+
+$user = $_SESSION['user'];
+
+
+//$post_id = $_POST['post_id'];
+
+$qry = "SELECT c.id, c.comment, c.created_by, c.created_at ,u.name FROM comments c join users u on (u.id = c.created_by) order by c.created_at desc";
+
+require_once("config.php");
+$con = mysqli_connect(HOST_NAME , DB_UN ,DB_PW,DB_NAME,DB_PORT);
+$rslt = mysqli_query($con, $qry);
+
+
+
+while($comment = mysqli_fetch_assoc($rslt)){
+
+
+?>
+  
+  <i class="name" style=""><?= $comment['name'] ?></i> <br>
+  <i style="color:red; font-size:13px"> at <?= $comment['created_at'] ?></i><br>
+          <p style="margin-top:20px; font-size:20px"><?= $comment['comment'] ?></p>
+<hr>
+        
+       
+                  
+                 
+                    <?php 
+                  }
+                  ?>
+    
+  
+
+<div class="col-6 my-5"> 
+  <form action="comment_create.php" method="POST">
+  <input type="hidden" name="post_id" value="<?=$post['id']?>">
+    <label for="validationTextarea">Add Comment</label>
+    <textarea class="form-control pb-5 pt-5" name="comment"  id="" placeholder="Enter your comment"></textarea>
+      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-4">Comment</button>
+      </form>
+      
+</div>
+
+</div>  
 
  
 
