@@ -32,9 +32,17 @@ $post = mysqli_fetch_assoc($rslt)
 
                     <?php
                     $user = $_SESSION['user'];
+                    if($user["id"] == $post["created_by"]){
+                      ?>
+                     
+                      <a href="post_edit.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-success">edit</a>
+                      <?php
+                    }
+                    ?>
+                      <?php
+                    $user = $_SESSION['user'];
                     if($user["id"] == $post["created_by"] || $user["role"] =="admin" ){
                       ?>
-                      <a href="post_edit.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-success">edit</a>
                     <a href="post_delete.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-danger">delete</a>
                     <?php
                 
