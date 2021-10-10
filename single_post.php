@@ -11,6 +11,7 @@ require("header.php")
 </head>
 <body>
 <div class="container emp-profile">
+  
 
 <?php
 require_once("config.php");
@@ -33,7 +34,7 @@ $post = mysqli_fetch_assoc($rslt)
                     if($user["id"] == $post["created_by"]){
                       ?>
                      
-                      <a href="post_edit.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-success">edit</a>
+                      <a href="post_edit.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-success"><i  style="font-size:20px" class="fa fa-pencil-square-o"></i></a>
                       <?php
                     }
                     ?>
@@ -41,7 +42,7 @@ $post = mysqli_fetch_assoc($rslt)
                     $user = $_SESSION['user'];
                     if($user["id"] == $post["created_by"] || $user["role"] =="admin" ){
                       ?>
-                    <a href="post_delete.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-danger">delete</a>
+                    <a href="post_delete.php?post_id=<?= $post['id'] ?>" class="btn btn-sm btn-danger"><i style="font-size:20px" class="fa">&#xf014;</i></a>
                     <?php
                 
                     }
@@ -61,14 +62,15 @@ $post = mysqli_fetch_assoc($rslt)
 
 
 <div class="container">
+<h3 class="mb-4">Comments:</h3>
 <?php
 
 $user = $_SESSION['user'];
 
 
-//$post_id = $_POST['post_id'];
+$post_id = $_GET['id'];
 
-$qry = "SELECT c.id, c.comment, c.created_by, c.created_at ,u.name FROM comments c join users u on (u.id = c.created_by) order by c.created_at desc";
+$qry = "SELECT c.id, c.comment, c.created_by, c.created_at ,u.name FROM comments c join users u on (u.id = c.created_by) join posts p on (p.id = c.post_id) where p.id = $post_id order by c.created_at desc";
 
 require_once("config.php");
 $con = mysqli_connect(HOST_NAME , DB_UN ,DB_PW,DB_NAME,DB_PORT);
@@ -82,8 +84,18 @@ while($comment = mysqli_fetch_assoc($rslt)){
 ?>
   
   <i class="name" style=""><?= $comment['name'] ?></i> <br>
-  <i style="color:red; font-size:13px"> at <?= $comment['created_at'] ?></i><br>
+  <i style="color:red; font-size:13px"><?= $comment['created_at'] ?></i><br>
           <p style="margin-top:20px; font-size:20px"><?= $comment['comment'] ?></p>
+          <?php
+                    $user = $_SESSION['user'];
+                    if($user["id"] == $comment["created_by"] || $user["role"] =="admin" ){
+                      ?>
+                    <a href="comment_delete.php?comment_id=<?= $comment['id'] ?>" class="btn btn-sm btn-danger"><i style="font-size:20px" class="fa">&#xf014;</i></a>
+                    <?php
+                
+                    }
+                    ?>
+          
 <hr>
         
        

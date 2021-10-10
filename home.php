@@ -12,6 +12,10 @@ require_once("header.php");
 background-image: linear-gradient(315deg, #D67A9A 0%, #D67A9A 74%);
   border-color: #D67A9A;
   border-radius: 12px;
+  
+}
+.btn-transparent:hover{
+  text-decoration: underline;
 }
 </style>
 <section class="section">
@@ -20,7 +24,7 @@ background-image: linear-gradient(315deg, #D67A9A 0%, #D67A9A 74%);
   $user = $_SESSION['user'];
   if ($user["role"] == "admin" || $user["role"] == "editor"){ ?>
   <form class="form-inline" method="POST" action="add_post.php">
-  <button  class="btn btn-outline btn-primary btn-lg py-3 mb-5" type="submit">Create Post+</button>
+  <button  class="btn btn-outline btn-primary btn-lg py-3 mb-5" type="submit">Create Post <i class="fa fa-plus" style="font-size: 14px;"></i></button>
   </form>
   <?php 
   }
@@ -60,7 +64,7 @@ while($post = mysqli_fetch_assoc($rslt)){
                       <?php 
                     }
                     ?>
-          <h4 class="title-border mt-4"><a class="text-dark" href="blog-single.html"><?= $post['title']?></a></h4>
+          <h4 class="title-border mt-4"><a class="text-dark" href="single_post.php?id=<?=$post['id']?>"><?= $post['title']?></a></h4>
           <p><?= $post['body']?></p>
           <a href="single_post.php?id=<?=$post['id']?>" class="btn btn-transparent">read more</a>
         

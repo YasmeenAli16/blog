@@ -6,14 +6,7 @@ require("header.php");
 			      	<div class="d-flex">
 			      		<div class="w-100">
 			      			<h3 class="mb-4">Add new user</h3>
-			      		</div>
-								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-									</p>
-								</div>
-			      	</div>
+			      		
 							<form action="user_store.php" class="signin-form" method="post">
 							
 			      		<div class="form-group mb-3">
