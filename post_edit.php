@@ -28,7 +28,7 @@ if (!empty($_GET["post_id"]) && ($user["role"] == "admin" || $user["role"] == "e
 }
 
 ?>  
-    <title>Blog | Create Post</title>
+    <title>Blog | Edit Post</title>
 </head>
 <body>
 <div class="container mt-4">

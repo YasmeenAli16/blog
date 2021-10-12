@@ -24,7 +24,7 @@ $name = filter_var(trim( $_POST['name']), FILTER_SANITIZE_STRING);
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) ;
 $mobile = filter_var(trim($_POST['mobile']), FILTER_SANITIZE_STRING) ;
 $pass = htmlspecialchars( $_POST['pass']);
-//$pass_con = htmlspecialchars($_POST['confirm_pass']);
+
 $gender = $_POST['gender'];
 
 if(empty($errors['email']) && ! filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email'] = "*Email is invalid formate ex: xxx@ymail.com";
@@ -39,6 +39,7 @@ $pass = md5($pass);
 require_once("config.php");
 $con = mysqli_connect(HOST_NAME , DB_UN ,DB_PW,DB_NAME,DB_PORT);
 $rslt =mysqli_query($con ,$qry);
+echo mysqli_error($con);
 
 mysqli_close($con);
 

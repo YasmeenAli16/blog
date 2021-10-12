@@ -1,12 +1,7 @@
 <?php 
 require("header.php")
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<div class="container mt-4">
+
 
   
     <title>Blog | Create Post</title>

@@ -55,10 +55,36 @@ $post = mysqli_fetch_assoc($rslt)
 </div>
 <img class="img-fluid mb-4" style="height:450px; width:450px; " src="<?= $post['image']?>">
 <p class="text mb-2" style="font-weight:bold;">By <?= $post['name'] ?> at <?= $post['created_at'] ?></p>
+<?php 
 
-        
+
+$like = $_GET['id'];
+$post_id = $_GET['id'];
+ 
+
+$qry = "SELECT post_id, COUNT(id) count from likes where post_id = $post_id";
+
+require_once("config.php");
+$con = mysqli_connect(HOST_NAME , DB_UN ,DB_PW,DB_NAME,DB_PORT);
+$rslt = mysqli_query($con, $qry);
+
+
+
+$like = mysqli_fetch_assoc($rslt)
+
+
+?>
+
+<form action="like_create.php" method="POST">
+  <input type="hidden" name="post_id" value="<?=$post['id']?>">
+    <input type="hidden" name="type">
+      <button type="submit" class="btn btn-sm btn-info mt-3"><i style="font-size:26px" class="fa fa-thumbs-up"></i><i style="font-size:18px"> <?= $like['count']?></i> </button>
+      </form>
+      
       </div>
+      
 </div>
+
 
 
 <div class="container">

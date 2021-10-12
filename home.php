@@ -65,7 +65,13 @@ while($post = mysqli_fetch_assoc($rslt)){
                     }
                     ?>
           <h4 class="title-border mt-4"><a class="text-dark" href="single_post.php?id=<?=$post['id']?>"><?= $post['title']?></a></h4>
-          <p><?= $post['body']?></p>
+          <p><?php if (strlen($post['body']) >50){
+            echo substr($post['body'], 0, 25). "...." ;
+
+          }else{
+            echo $post['body'];
+          }
+          ?></p>
           <a href="single_post.php?id=<?=$post['id']?>" class="btn btn-transparent">read more</a>
         
         </article>

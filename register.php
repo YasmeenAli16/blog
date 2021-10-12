@@ -77,8 +77,8 @@
 		            </div>
                     <div class="form-group mb-3">
                         <label class="label" for="gender">Gender</label><br>
-						<input type="radio" name="gender" value="0" checked> Male
-						<input  type="radio" name="gender" value="1"> Female						
+						<input type="radio" name="gender" value="male" checked> Male
+						<input  type="radio" name="gender" value="female"> Female						
 					</div>
 		            <div class="form-group">
 		            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
