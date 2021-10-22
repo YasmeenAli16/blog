@@ -4,7 +4,7 @@ require_once("header.php");
 ?>
 
 <!-- blog post -->
-<title>Blog | Homepage</title>
+<title>Blog | <?=$messages['Home']?></title>
 <style>
 .btn-primary {
   color: #ffffff;
@@ -24,7 +24,7 @@ background-image: linear-gradient(315deg, #D67A9A 0%, #D67A9A 74%);
   $user = $_SESSION['user'];
   if ($user["role"] == "admin" || $user["role"] == "editor"){ ?>
   <form class="form-inline" method="POST" action="add_post.php">
-  <button  class="btn btn-outline btn-primary btn-lg py-3 mb-5" type="submit">Create Post <i class="fa fa-plus" style="font-size: 14px;"></i></button>
+  <button  class="btn btn-outline btn-primary btn-lg py-3 mb-5" type="submit"><?=$messages ["Create Post"]?> <i class="fa fa-plus" style="font-size: 14px;"></i></button>
   </form>
   <?php 
   }
@@ -54,7 +54,7 @@ while($post = mysqli_fetch_assoc($rslt)){
         <article class="text-center">
           <img class="img-fluid mb-4" style="height:230px; width:240px" src="<?= $post['image']?>">
           
-          <p class="text mb-2">By <?= $post['name'] ?> at <?= $post['created_at'] ?></p>
+          <p class="text mb-2"><?=$messages ["By"]?> <?= $post['name'] ?> <?=$messages ["at"]?> <?= $post['created_at'] ?></p>
           <?php 
                     
                     if($user["role"] =="admin" && $post["status"] == "pending"){
@@ -72,7 +72,7 @@ while($post = mysqli_fetch_assoc($rslt)){
             echo $post['body'];
           }
           ?></p>
-          <a href="single_post.php?id=<?=$post['id']?>" class="btn btn-transparent">read more</a>
+          <a href="single_post.php?id=<?=$post['id']?>" class="btn btn-transparent"><?=$messages ["Read More"]?></a>
         
         </article>
       </div>

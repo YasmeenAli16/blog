@@ -1,25 +1,42 @@
+<?php
+
+
+$lang ="ar";
+if (!empty($_SESSION["lang"])){
+  $lang=$_SESSION["lang"];
+}
+
+if ($lang =="ar") require_once("messages_ar.php");
+else require_once("messages_en.php");
+
+?>
+<!DOCTYPE html>
+<html lang="<?=$lang?>" dir="<?=$messages ["dir"]?>">
+
+<head>
+  <meta charset="utf-8">
 <footer style="background-color: #eec0c6;
 background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
 "> 
   <div class="section">
-    <div class="container">
+    <div class="container" style="text-align:<?=$messages ["left"]?>">
       <div class="row">
-        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          <h6>Address</h6>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0" style="text-align:<?=$messages ["left"]?>">
+          <h6><?=$messages ["Address"]?></h6>
           <ul class="list-unstyled">
             <li class="font-secondary text-dark">Sydney</li>
             <li class="font-secondary text-dark">6 rip carl Avenue CA 90733</li>
           </ul>
         </div>
         <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          <h6>Contact Info</h6>
+          <h6><?=$messages ["Contact Info"]?></h6>
           <ul class="list-unstyled">
             <li class="font-secondary text-dark">Tel: +90 000 333 22</li>
             <li class="font-secondary text-dark">Mail: exmaple@ymail.com</li>
           </ul>
         </div>
         <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          <h6>Follow</h6>
+          <h6><?=$messages ["Follow"]?></h6>
           <ul class="list-inline d-inline-block">
             <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-facebook"></i></a></li>
             <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
@@ -31,7 +48,7 @@ background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
     </div>
   </div>
   <div class="text-center pb-3">
-    <p class="mb-0">Copyright ©2021</p>
+    <p class="mb-0"> <?=$messages ["Copyright ©2021"]?></p>
   </div>
 </footer>
 

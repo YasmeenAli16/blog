@@ -1,12 +1,20 @@
 <?php
+
 $user = $_SESSION['user'];
 if (empty($_SESSION["user"])){
 	header("location:login.php?secure=page");
 }
+$lang ="en";
+if (!empty($_SESSION["lang"])){
+  $lang=$_SESSION["lang"];
+}
+
+if ($lang =="ar") require_once("messages_ar.php");
+else require_once("messages_en.php");
 
 ?>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="<?=$lang?>" dir="<?=$messages ["dir"]?>">
 
 <head>
   <meta charset="utf-8">
@@ -51,7 +59,7 @@ if (empty($_SESSION["user"])){
     
     if($active_link  =="home")echo "active";
       ?>">
-        <a class="nav-link " href="home.php">Home </a>
+        <a class="nav-link " href="home.php"><?=$messages ["Home"]?></a>
       </li>
 
       <?php if ($user["role"] == "admin") { ?>
@@ -60,11 +68,11 @@ if (empty($_SESSION["user"])){
  
         if($active_link  =="users")echo "active";
       ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Users
+          <?=$messages ["Users"]?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="user_create.php">Add User</a>
-          <a class="dropdown-item" href="users.php">Users List</a>
+          <a class="dropdown-item" href="user_create.php"><?=$messages ["Add"]?> <?=$messages ["User"]?></a>
+          <a class="dropdown-item" href="users.php"><?=$messages ["List"]?> <?=$messages ["Users"]?></a>
           
 
         </div>
@@ -72,27 +80,30 @@ if (empty($_SESSION["user"])){
         <?php }?>
      
     </ul>
+   
 
     <ul class="navbar-nav"> 
+    <li class="nav-item">
+   
+        <a class="nav-link active" <?php  if ($lang =="ar"){
+      ?>
+     href="change_lang.php?lang=en"><?=$messages ["اللغة العربية"]?></a>
+      <?php
+  }else{
+    ?>
+    <a class="nav-link active" href="change_lang.php?lang=ar">
+ <?=$messages ["English"]?></a>    <?php
+  }?>
+      </li>
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   <?=$user["name"]?>
   </a>
   
   <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-  <a class="dropdown-item" href="user_show.php">Profile</a>
-  <a class="dropdown-item" href="logout.php">Logout</a>
-  <?php /*
-  if ($lang =="ar"){
-      ?>
-      <a class="dropdown-item" href="change_lang.php?lang=en">English</a>
-      <?php
-  }else{
-    ?>
-    <a class="dropdown-item" href="change_lang.php?lang=ar">اللغةالعربية</a>
-    <?php
-  }*/
-  ?>  
+  <a class="dropdown-item" href="user_show.php"><?=$messages ["Profile"]?></a>
+  <a class="dropdown-item" href="logout.php"><?=$messages ["Logout"]?></a>
+ 
       </li>
     </ul>
 </div>

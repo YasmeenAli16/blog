@@ -24,7 +24,7 @@ $user = mysqli_fetch_assoc($rslt)
 ?>
 
 <h3 style="text-align: center; margin-top:20px">
-                             My Profile
+<?=$messages ["Profile"]?>
                                     </h3>
 
 
@@ -43,22 +43,22 @@ $user = mysqli_fetch_assoc($rslt)
 <div class="container-fluid pt-5 my-5" style="text-align: center;">
                                   
                                     
-                                    	<p class="text my-4 ml-3 pt-4" style="font-weight:bold; font-size:20px"> Name: <?= $user['name']?></p>
+                                    	<p class="text my-4 ml-3 pt-4" style="font-weight:bold; font-size:20px"> <?=$messages ["Name"]?>: <?= $user['name']?></p>
 
                                   
                                     
-                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px">Email: <?= $user['email'] ?></p>
+                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px"><?=$messages ["Email"]?>: <?= $user['email'] ?></p>
 
                                  
               
                             
-                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px">Mobile: <?= $user['mobile'] ?></p>
+                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px"><?=$messages ["Mobile"]?>: <?= $user['mobile'] ?></p>
 
                                     
-                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px">Gender: <?= $user['gender'] ?></p>
+                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px"><?=$messages ["Gender"]?>: <?= $user['gender'] ?></p>
 
                                    
-                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px">Role: <?= $user['role'] ?></p>
+                                    	<p class="text mb-4 ml-3" style="font-weight:bold; font-size:20px"><?=$messages ["Role"]?>: <?= $user['role'] ?></p>
 
                                         
                       <a href="user_edit.php?user_id=<?= $user['id'] ?>" class="btn btn-sm btn-success"><i  style="font-size:22px" class="fa fa-pencil-square-o"></i></a>

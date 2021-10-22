@@ -29,10 +29,10 @@ if (!empty($_GET["user_id"])){
 }
 
 ?> 
-	<div class="login-wrap p-4 p-lg-5">
+	<div class="login-wrap p-4 p-lg-5" style="text-align:<?=$messages ["left"]?>">
 			      	<div class="d-flex">
 			      		<div class="w-100">
-			      			<h3 class="mb-4">Update Profile</h3>
+			      			<h3 class="mb-4"><?=$messages ["Update Profile"]?> </h3>
 			      		
 							<form action="user_update.php" class="signin-form" method="POST" enctype="multipart/form-data">
                            
@@ -47,37 +47,37 @@ if (!empty($_GET["user_id"])){
 </div>
 						
 						 
-			      			<label class="label" for="name">Name</label>
+			      			<label class="label" for="name"><?=$messages ["Name"]?></label>
 							
 							  
-			      			<input type="text" name="name" class="form-control" placeholder="Name" value="<?=$user['name']?>">
+			      			<input type="text" name="name" class="form-control" placeholder="<?=$messages ["Name"]?>" value="<?=$user['name']?>">
 							  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['name'])) echo $_SESSION['errors']['name']?></span>
 
 				
 			      		</div>
                           <div class="form-group mb-3">
-			      			<label class="label" for="name">Email</label>
-			      			<input type="text" name="email" class="form-control" placeholder="Email" value="<?=$user['email']?>">
+			      			<label class="label" for="name"><?=$messages ["Email"]?></label>
+			      			<input type="text" name="email" class="form-control" placeholder="<?=$messages ["Email"]?>" value="<?=$user['email']?>">
 							  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['email'])) echo $_SESSION['errors']['email']?></span>
 			      		</div>
                           <div class="form-group mb-3">
-			      			<label class="label" for="mobile">Mobile</label>
-			      			<input type="text" name="mobile" class="form-control" placeholder="Mobile" value="<?=$user['mobile']?>">
+			      			<label class="label" for="mobile"><?=$messages ["Mobile"]?></label>
+			      			<input type="text" name="mobile" class="form-control" placeholder="<?=$messages ["Mobile"]?>" value="<?=$user['mobile']?>">
 							  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['mobile'])) echo $_SESSION['errors']['mobile']?></span>
 			      		</div>    
                           <div class="form-group mb-3">
-		            	<label class="label" for="password">Password</label>
-		              <input type="password" name="pass" class="form-control" placeholder="Password">
+		            	<label class="label" for="password"><?=$messages ["Password"]?></label>
+		              <input type="password" name="pass" class="form-control" placeholder="<?=$messages ["Password"]?>">
 					  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['pass'])) echo $_SESSION['errors']['pass']?></span>
 		            </div>
                     <div class="form-group mb-3">
-		            	<label class="label" for="password">Confirm Password</label>
-		              <input type="password" name="confirm_pass" class="form-control" placeholder="Confirm Password">
+		            	<label class="label" for="password"> <?=$messages ["Confirm"]?> <?=$messages ["Password"]?></label>
+		              <input type="password" name="confirm_pass" class="form-control" placeholder="<?=$messages ["Confirm"]?> <?=$messages ["Password"]?>">
 					  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['confirm_pass'])) echo $_SESSION['errors']['confirm_pass']?></span>
 		            </div>
 		        
 		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-secondary submit px-3">Save</button>
+		            	<button type="submit" class="form-control btn btn-secondary submit px-3"><?=$messages ["Save"]?></button>
 		            </div>
 		         
 		          </form>

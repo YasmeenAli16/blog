@@ -2,56 +2,56 @@
 $active_link = "users";
 require("header.php");
 ?>	
-	<div class="login-wrap p-4 p-lg-5">
+	<div class="login-wrap p-4 p-lg-5" style="text-align:<?=$messages ["left"]?>">
 			      	<div class="d-flex">
 			      		<div class="w-100">
-			      			<h3 class="mb-4">Add new user</h3>
+			      			<h3 class="mb-4"><?=$messages ["Add"]?> <?=$messages ["New User"]?></h3>
 			      		
 							<form action="user_store.php" class="signin-form" method="post">
 							
 			      		<div class="form-group mb-3">
 						
 						 
-			      			<label class="label" for="name">Name</label>
+			      			<label class="label" for="name"><?=$messages ["Name"]?></label>
 							
 							  
-			      			<input type="text" name="name" class="form-control" placeholder="Name" value="<?php if(!empty($_SESSION['old_inputs']['name'] )) echo $_SESSION['old_inputs']['name']?>">
+			      			<input type="text" name="name" class="form-control" placeholder="<?=$messages ["Name"]?>" value="<?php if(!empty($_SESSION['old_inputs']['name'] )) echo $_SESSION['old_inputs']['name']?>">
 							  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['name'])) echo $_SESSION['errors']['name']?></span>
 
 				
 			      		</div>
                           <div class="form-group mb-3">
-			      			<label class="label" for="name">Email</label>
-			      			<input type="text" name="email" class="form-control" placeholder="Email" value="<?php if(!empty($_SESSION['old_inputs']['email'] )) echo $_SESSION['old_inputs']['email']?>">
+			      			<label class="label" for="name"><?=$messages ["Email"]?></label>
+			      			<input type="text" name="email" class="form-control" placeholder="<?=$messages ["Email"]?>" value="<?php if(!empty($_SESSION['old_inputs']['email'] )) echo $_SESSION['old_inputs']['email']?>">
 							  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['email'])) echo $_SESSION['errors']['email']?></span>
 			      		</div>
                           <div class="form-group mb-3">
-			      			<label class="label" for="mobile">Mobile</label>
-			      			<input type="text" name="mobile" class="form-control" placeholder="Mobile" value="<?php if(!empty($_SESSION['old_inputs']['mobile'] )) echo $_SESSION['old_inputs']['mobile']?>">
+			      			<label class="label" for="mobile"><?=$messages ["Mobile"]?></label>
+			      			<input type="text" name="mobile" class="form-control" placeholder="<?=$messages ["Mobile"]?>" value="<?php if(!empty($_SESSION['old_inputs']['mobile'] )) echo $_SESSION['old_inputs']['mobile']?>">
 							  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['mobile'])) echo $_SESSION['errors']['mobile']?></span>
 			      		</div>    
 		            <div class="form-group mb-3">
-		            	<label class="label" for="password">Password</label>
-		              <input type="password" name="pass" class="form-control" placeholder="Password">
+		            	<label class="label" for="password"><?=$messages ["Password"]?></label>
+		              <input type="password" name="pass" class="form-control" placeholder="<?=$messages ["Password"]?>">
 					  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['pass'])) echo $_SESSION['errors']['pass']?></span>
 		            </div>
                     <div class="form-group mb-3">
-		            	<label class="label" for="password">Confirm Password</label>
-		              <input type="password" name="confirm_pass" class="form-control" placeholder="Confirm Password">
+		            	<label class="label" for="password"><?=$messages ["Confirm"]?> <?=$messages ["Password"]?></label>
+		              <input type="password" name="confirm_pass" class="form-control" placeholder="<?=$messages ["Confirm"]?> <?=$messages ["Password"]?>">
 					  <span class="text-danger"><?php if (!empty($_SESSION['errors'] )&&  !empty($_SESSION['errors']['confirm_pass'])) echo $_SESSION['errors']['confirm_pass']?></span>
 		            </div>
                     <div class="form-group mb-3">
-                        <label class="label" for="gender">Gender</label><br>
-						<input type="radio" name="gender" value="0" checked> Male
-						<input  type="radio" name="gender" value="1"> Female						
+                        <label class="label" for="gender"><?=$messages ["Gender"]?></label><br>
+						<input type="radio" name="gender" value="0" checked><?=$messages ["Male"]?> 
+						<input  type="radio" name="gender" value="1"> <?=$messages ["Female"]?> 						
 					</div>
                     <div class="form-group mb-3">
-                        <label class="label" for="gender">Role</label><br>
-						<input type="radio" name="role" value="admin" checked> Admin
-						<input type="radio" name="role" value="editor" checked> Editor						
+                        <label class="label" for="gender"><?=$messages ["Role"]?></label><br>
+						<input type="radio" name="role" value="admin" checked><?=$messages ["Admin"]?>  
+						<input type="radio" name="role" value="editor" checked><?=$messages ["Editor"]?>   						
 					</div>
 		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-secondary submit px-3">Save</button>
+		            	<button type="submit" class="form-control btn btn-secondary submit px-3"><?=$messages ["Save"]?> </button>
 		            </div>
 		         
 		          </form>

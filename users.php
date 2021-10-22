@@ -2,15 +2,15 @@
 $active_link = "users";
 require("header.php");
 ?>
-<div class="container my-4 py-4">
-    <h2>Users</h2>
+<div class="container my-4 py-4" style="text-align:<?=$messages ["left"]?>">
+    <h2><?=$messages ["Users"]?></h2>
 <table class="table table-striped mt-4">
   <thead>
     <tr>
-    <th>Name</th>
-	<th>Email</th>
-   <th>Created At</th>
-   <th></th> 
+    <th><?=$messages ["Name"]?></th>
+	<th><?=$messages ["Email"]?></th>
+   <th><?=$messages ["Created"]?> <?=$messages ["at"]?></th>
+   <!--<th></th>--> 
 				    
     </tr>
   </thead>
@@ -39,7 +39,7 @@ while($users = mysqli_fetch_assoc($rslt)){
       <td><?= $users['name']?></td>
       <td><?= $users['email']?></td>
       <td><?= $users['created_at']?></td>
-      <td><a href="" class="btn btn-success btn-sm">Active</a><a href="" class="btn btn-danger btn-sm pl-3">Deactive</a></td>
+    <!-- <td><a href="" class="btn btn-success btn-sm">Active</a><a href="" class="btn btn-danger btn-sm pl-3">Deactive</a></td> -->
     </tr>
     <?php
 }

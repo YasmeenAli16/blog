@@ -1,15 +1,10 @@
 <?php
 require("header.php")
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-</head>
-<body>
+
+
+    <title>Blog | Post</title>
+
 <div class="container emp-profile">
   
 
@@ -27,7 +22,7 @@ $post = mysqli_fetch_assoc($rslt)
 ?>
 <div class="container-fluid py-5 my-5">
 
-<div class="col-md-5" style="float:right">
+<div class="col-md-5" style="float:<?=$messages ["right"]?>">
 
                     <?php
                     $user = $_SESSION['user'];
@@ -55,7 +50,9 @@ $post = mysqli_fetch_assoc($rslt)
          
 </div>
 <img class="img-fluid mb-4" style="height:450px; width:450px; " src="<?= $post['image']?>">
-<p class="text mb-2" style="font-weight:bold;">By <?= $post['name'] ?> at <?= $post['created_at'] ?></p>
+<p class="text" style="margin-right:180px;font-weight:bold;text-align:<?=$messages ["left"]?>"><?=$messages ["By"]?> <?= $post['name'] ?> <?=$messages ["at"]?> <?= $post['created_at'] ?></p>
+
+
 <?php 
 
 
@@ -76,20 +73,21 @@ $like = mysqli_fetch_assoc($rslt)
 
 ?>
 
+<div class="col-6 mb-5 ml-5">
 <form action="like_create.php" method="POST">
   <input type="hidden" name="post_id" value="<?=$post['id']?>">
     <input type="hidden" name="type">
-      <button type="submit" class="btn btn-sm btn-info mt-3"><i style="font-size:26px" class="fa fa-thumbs-up"></i><i style="font-size:18px"> <?= $like['count']?></i> </button>
+      <button type="submit" class="btn btn-sm btn-info mt-3" style="float:<?=$messages ["left"]?>"><i style="font-size:26px" class="fa fa-thumbs-up"></i><i style="font-size:18px"> <?= $like['count']?></i> </button>
       </form>
       
       </div>
-      
 </div>
+  
 
 
+ <div class="container"> 
 
-<div class="container">
-<h3 class="mb-4">Comments:</h3>
+<h3 class="mb-4" style="text-align:<?=$messages ["left"]?>"><?=$messages ["Comments"]?>:</h3>
 <?php
 
 $user = $_SESSION['user'];
@@ -109,7 +107,9 @@ while($comment = mysqli_fetch_assoc($rslt)){
 
 
 ?>
+
    <input type="hidden" name="post_id">
+   <div style="text-align:<?=$messages ["left"]?>; margin-right:100px">
   <i class="name" style=""><?= $comment['name'] ?></i> <br>
   <i style="color:red; font-size:13px"><?= $comment['created_at'] ?></i><br>
           <p style="margin-top:20px; font-size:20px"><?= $comment['comment'] ?></p>
@@ -124,6 +124,10 @@ while($comment = mysqli_fetch_assoc($rslt)){
                     ?>
           
 <hr>
+</div>
+
+
+
         
        
                   
@@ -131,20 +135,23 @@ while($comment = mysqli_fetch_assoc($rslt)){
                     <?php 
                   }
                   ?>
+
+
     
   
 
-<div class="col-6 my-5"> 
+<div class="col-6 my-5 ml-5">
   <form action="comment_create.php" method="POST">
   <input type="hidden" name="post_id" value="<?=$post['id']?>">
-    <label for="validationTextarea">Add Comment</label>
-    <textarea class="form-control pb-5 pt-5" name="comment"  id="" placeholder="Enter your comment"></textarea>
-      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-4">Comment</button>
+ 
+    <textarea class="form-control pb-5 pt-5" name="comment"  id="" placeholder="<?=$messages ["Write"]?> <?=$messages ["your Comment"]?>"></textarea>
+      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-4"><?=$messages ["Comment"]?></button>
       </form>
       
 </div>
 
 </div>  
+</div>
 
  
 
